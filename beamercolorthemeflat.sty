@@ -1,0 +1,118 @@
+% Flat Color Theme for LaTeX Beamer following the palette from
+% flatuicolors.com
+%
+% Copyright 2013 Florian Hagenauer
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\ProvidesPackage{beamercolorthemeflat}
+\RequirePackage{etoolbox}
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+  family=flat,
+  prefix=flat@,
+}
+
+\DeclareBoolOption[false]{alternative}
+\DeclareComplementaryOption{original}{alternative}
+\ProcessKeyvalOptions*
+
+% Basic Flat Colors following flatuicolors.com
+\definecolor{turquoise}{HTML}{1ABC9C}
+\definecolor{emerland}{HTML}{2ecc71}
+\definecolor{peterRiver}{HTML}{3498db}
+\definecolor{amethyst}{HTML}{9b59b6}
+\definecolor{wetasphalt}{HTML}{34495e}
+\definecolor{greenSea}{HTML}{16a085}
+\definecolor{nephritis}{HTML}{27ae60}
+\definecolor{belizeHole}{HTML}{2980b9}
+\definecolor{wisteria}{HTML}{8e44ad}
+\definecolor{midnightBlue}{HTML}{2c3e50}
+\definecolor{sunFlower}{HTML}{F1C40F}
+\definecolor{carrot}{HTML}{e67e22}
+\definecolor{alizarin}{HTML}{e74c3c}
+\definecolor{clouds}{HTML}{ECF0F1}
+\definecolor{concrete}{HTML}{95a5a6}
+\definecolor{orange}{HTML}{F39C12}
+\definecolor{pumpkin}{HTML}{d35400}
+\definecolor{pomegranate}{HTML}{c0392b}
+\definecolor{silver}{HTML}{bdc3c7}
+\definecolor{asbestos}{HTML}{7F8C8D}
+
+% Colors for alternative color scheme
+\definecolor{dawn}{HTML}{D1AC5B}
+\definecolor{brownPaper}{HTML}{E5CF9D}
+\definecolor{lightOrange}{HTML}{D7803B}
+\definecolor{wood}{HTML}{2A240A}
+\definecolor{wine}{HTML}{B93B00}
+
+\ifboolexpe{ bool {flat@alternative}}{
+	\colorlet{text}{black}
+	\colorlet{bg1}{brownPaper}
+	\colorlet{bg2}{lightOrange}
+	\colorlet{alert}{wine}
+	\colorlet{header}{wood}
+	\colorlet{headerText}{white}
+	\colorlet{shaded}{belizeHole}
+	\colorlet{boxHeader}{dawn}
+	\colorlet{sepLine}{black}
+}{
+% The basic color scheme
+	\colorlet{text}{white}
+	\colorlet{bg1}{peterRiver}
+	\colorlet{bg2}{belizeHole}
+	\colorlet{alert}{orange}
+	\colorlet{header}{emerland}
+	\colorlet{headerText}{white}
+	\colorlet{shaded}{belizeHole}
+	\colorlet{boxHeader}{pomegranate!80}
+	\colorlet{sepLine}{midnightBlue}
+}
+
+\mode<presentation>
+
+\setbeamercolor{normal text}{fg=text, bg=bg1}
+\setbeamercolor{alerted text}{fg=alert}
+
+\setbeamercolor{footline}{bg=bg1,fg=text}
+\setbeamercolor{headline}{bg=bg1,fg=text}
+
+\setbeamercolor*{titlelike}{fg=text}
+\setbeamercolor*{frametitle}{fg=headerText, bg=header}
+\setbeamercolor*{title}{fg=text, bg=bg2}
+
+\setbeamercolor{item projected}{fg=text,bg=bg2}
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamercolor{section in toc}{fg=text}
+\setbeamercolor{section in toc shaded}{fg=shaded}
+ 
+\setbeamercolor*{structure}{bg=bg1, fg=text} 
+\setbeamercolor*{palette primary}{bg=bg1, fg=text}
+\setbeamercolor*{palette secondary}{parentbg=bg1, fg=text}
+\setbeamercolor*{palette tertiary}{bg=bg1, fg=text}
+\setbeamercolor*{palette quaternary}{bg=bg1, fg=text}
+
+% Blocks
+\setbeamercolor{block title}{fg=text, bg=boxHeader}
+\setbeamercolor{block body}{parent=normal text, bg=bg2}
+\setbeamercolor{block body example}{parent=normal text, bg=bg2}
+
+\setbeamercolor{separation line}{fg=text}
+\setbeamercolor{fine separation line}{fg=sepLine}
+
+\setbeamercolor{page number in head/foot}{fg=text}
+
+\mode
+<all>
